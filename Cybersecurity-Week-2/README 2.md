@@ -1,13 +1,68 @@
-Exercise 1 - Network-Commands: The network command procedure began by using ip a to identify the interface configuration, establishing the local IP as 192.198.8.113 on the eth0 interface. Subsequently, ip route was employed to determine the gateway (192.168.8.1). Then, the commands netstat -tuln and ss -tuln were used to list listening connections and ports, observing the active services. The connectivity phase included using ping to test the connection with both the router and the local VM, followed by testing the connection to a specific port using nc -zv IP(local) <port>. Finally, the exercise concluded with the use of ss -t to exclusively list the active TCP connections on the virtual machine.
+## Exercise 1: Linux Network Diagnostics & Troubleshooting
+
+* **Configuration & Gateway Discovery:** Utilized `ip a` to verify the local interface configuration (`192.168.8.113/24` on `eth0`) and `ip route` to identify the default gateway (`192.168.8.1`).
+* **Socket & Port Auditing:** Executed `ss -tuln` and `netstat -tuln` to list active listening TCP/UDP ports and system services.
+* **Connectivity & TCP Verification:** Tested ICMP reachability via `ping`, validated open remote ports using `nc -zv <IP> <PORT>`, and inspected active TCP sessions with `ss -t`.
+
+---
+
+## Exercise 2: Automated Backup Script (`backup.sh`)
+
+* **Script Purpose:** Automates directory backups by generating date-stamped archive folders.
+* **Logic & Variables:** Defined target source (`/home/camila/Fundamental-of-Cybersecurity`) and destination paths, incorporating dynamic date tagging (`backup-$(date +%F)`).
+* **Execution & Verification:** Applied executable permissions via `chmod +x backup.sh`, executed `./backup.sh`, and validated structural output using `ls`.
+* ```bash
+#!/bin/bash
+ORIGEN="/home/camila/Fundamental-of-Cybersecurity"
+DESTINO="/home/camila/backup"
+
+mkdir -p "$DESTINO"
+cp -r "$ORIGEN" "$DESTINO/backup-$(date +%F)"
 
 
-Exercise 2 - ScriptsBash-Backup: The exercise focused on creating a backup automation script using bash. Initially, the nano editor was used to draft the script, where the path variables ORIGIN (/home/camila/Fundamental-of-Cybersecurity) and DESTINATION (/home/camila/backup) were defined, including a mkdir command for the destination. After defining the copy logic with cp -r $ORIGEN $DESTINO/backup-$(date +%F) to name the backup with the current date, the permissions management proceeded: they were modified using chmod +x to grant execution capability. Finally, the script was successfully executed using ./backup.sh, and the correct creation of the new backup folder in the destination was verified using the ls command.
+## Exercise 3: Automated File Search Script (`search.sh`)
+
+* **Script Purpose:** Automates recursive pattern matching across directory structures using Bash and `grep`.
+* **Core Logic:** Configured `grep -rnw` to execute full-word, recursive searches with line number reporting across targeted paths.
+* **Execution & Permissions:** Granted execution privileges via `chmod +x search.sh` and verified output via `./search.sh`.
+
+```bash
+#!/bin/bash
+CARPETA="/home/camila/Fundamental-of-Cybersecurity"
+PALABRA="Network"
+
+grep -rnw "$CARPETA" -e "$PALABRA"
+
+## Exercise 4: System Resource Monitoring Script (`monitoring.sh`)
+
+* **Script Creation & Logic:** Utilized the `nano` text editor to construct `monitoring.sh`. Integrated `top -b -n 1 | head -n 10` to capture non-interactive CPU metrics and top resource-consuming processes, followed by `free -h` to display memory/swap utilization in human-readable format.
+* **Permissions Management:** Granted execution rights using `chmod +x monitoring.sh`.
+* **Verification:** Executed the script via `./monitoring.sh` to confirm rapid, clear diagnostic terminal output for real-time monitoring.
+
+### Script Implementation
+```bash
+#!/bin/bash
+echo "=== CPU & Top Processes ==="
+top -b -n 1 | head -n 10
+
+echo -e "\n=== Memory Usage ==="
+free -h
 
 
-Exercise 3 - ScriptsBash-Search: The exercise focused on creating an automated search script using bash and the grep tool. Initially, the nano editor was used to draft the script, named search.sh, where the variables CARPETA (Directory), set to /home/camila/Fundamental-of-Cybersecurity to specify the search directory, and PALABRA (Word), set to $Network to contain the desired text pattern, were defined. The central search logic was implemented using the command grep -rnw $CARPETA -e $PALABRA. For execution, permission management was addressed by modifying them with chmod +x to grant execution capability. Finally, the script was successfully executed via ./search.sh, completing the task of finding the keyword within the specified directory's files.
+## Exercise 5: Isolated Internal Virtual Network Setup
 
+* **VM Provisioning:** Cloned an existing virtual machine to establish a secondary node for network testing.
+* **Adapter Configuration:** Reconfigured the virtual network adapters on both VMs to **Internal Network** mode to isolate traffic from external networks.
+* **Interface & IP Configuration:** Modified `/etc/network/interfaces` via `nano` and manually assigned static IP addresses within the same subnet using `sudo ip link set eth0 up` and `sudo ip addr add 192.168.x.x dev eth0`.
+* **Connectivity Verification:** Executed bidirectional `ping` requests between both nodes to confirm successful L3 reachability within the isolated segment.
 
-Exercise 4 - ScriptsBash-Monitoring: I performed an exercise to create a Bash script, named monitoring.sh, designed to quickly check the status of the system's CPU and RAM. I used the nano editor to write it. Inside the script, I included two key commands: top -b -n 1 | head -n 10 to get a snapshot of the CPU load and the most active processes, and free -h to show the usage of RAM and swap in an easy-to-read format. To make it functional, I granted execution permission using chmod +x monitoring.sh. Finally, I ran it with ./monitoring.sh and was able to view all the information instantly, confirming that the script serves well for diagnosing the system's status.
+### Key Commands Used
+```bash
+# Enable the eth0 interface
+sudo ip link set eth0 up
 
+# Assign static IP address to internal interface
+sudo ip addr add 192.168.10.5/24 dev eth0
 
-Exercise 5 - Connectivity-Network: To establish a virtual network between two machines, I first created the second VM by cloning the existing one. Next, I configured the network adapter of both machines as Internal Network, allowing them to communicate exclusively with each other. Inside each VM, I used sudo nano /etc/network/interfaces to assign an IP address to the network interface (eth0), which was then activated and configured using commands like sudo ip link set eth0 up and sudo ip addr add 192.168.x.x dev eth0. Finally, the correct connectivity of this internal network was successfully verified by running the ping command from one machine to the other's IP address and vice versa."
+# Verify isolated network connectivity
+ping -c 4 192.168.10.6from one machine to the other's IP address and vice versa."
