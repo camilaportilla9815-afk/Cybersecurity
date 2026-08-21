@@ -23,3 +23,9 @@ DNS Traffic Analysis and Unencrypted Domain Resolution Inspection
 * **Traffic Generation:** Executed explicit domain name resolutions via CLI using `dig`:
   ```bash
 dig example.com @8.8.8.8
+
+TCP 3-Way Handshake Analysis with Wireshark
+* **Environment Setup:** Bound Wireshark to the active network interface.
+* **Traffic Generation:** Initiated a direct TCP connection via CLI to a target host using `curl`:
+  ```bash
+  curl -v [http://example.com](http://example.com)
