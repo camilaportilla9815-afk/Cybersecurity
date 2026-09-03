@@ -25,7 +25,6 @@ cp -r "$ORIGEN" "$DESTINO/backup-$(date +%F)"
 * **Script Purpose:** Automates recursive pattern matching across directory structures using Bash and `grep`.
 * **Core Logic:** Configured `grep -rnw` to execute full-word, recursive searches with line number reporting across targeted paths.
 * **Execution & Permissions:** Granted execution privileges via `chmod +x search.sh` and verified output via `./search.sh`.
-
 ```bash
 #!/bin/bash
 CARPETA="/home/camila/Fundamental-of-Cybersecurity"
@@ -48,7 +47,6 @@ top -b -n 1 | head -n 10
 echo -e "\n=== Memory Usage ==="
 free -h
 
-
 ## Exercise 5: Isolated Internal Virtual Network Setup
 
 * **VM Provisioning:** Cloned an existing virtual machine to establish a secondary node for network testing.
@@ -65,4 +63,4 @@ sudo ip link set eth0 up
 sudo ip addr add 192.168.10.5/24 dev eth0
 
 # Verify isolated network connectivity
-ping -c 4 192.168.10.6from one machine to the other's IP address and vice versa."
+ping -c 4 192.168.10.6
