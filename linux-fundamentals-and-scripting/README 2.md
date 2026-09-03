@@ -11,10 +11,10 @@
 * **Script Purpose:** Automates directory backups by generating date-stamped archive folders.
 * **Logic & Variables:** Defined target source (`/home/camila/Fundamental-of-Cybersecurity`) and destination paths, incorporating dynamic date tagging (`backup-$(date +%F)`).
 * **Execution & Verification:** Applied executable permissions via `chmod +x backup.sh`, executed `./backup.sh`, and validated structural output using `ls`.
-* ```bash #!/bin/bash
+* ```bash
+#!/bin/bash
 ORIGEN="/home/camila/Fundamental-of-Cybersecurity"
 DESTINO="/home/camila/backup"
-
 mkdir -p "$DESTINO"
 cp -r "$ORIGEN" "$DESTINO/backup-$(date +%F)"
 
