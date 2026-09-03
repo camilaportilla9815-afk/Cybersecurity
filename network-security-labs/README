@@ -31,9 +31,10 @@
 
   ```bash
 
-dig example.com @8.8.8.8 ```
+dig example.com @8.8.8.8 
+```
 
-
+---
 
 ###  TCP 3-Way Handshake Analysis with Wireshark
 
@@ -43,5 +44,8 @@ dig example.com @8.8.8.8 ```
 
   ```bash
 
-  curl -v [http://example.com](http://example.com)```
+  curl -v [http://example.com](http://example.com)
+```
+
+
 
