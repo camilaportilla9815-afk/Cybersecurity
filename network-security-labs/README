@@ -1,4 +1,4 @@
-###  Network Reconnaissance and Port Mapping with Nmap
+### Network Reconnaissance and Port Mapping with Nmap
 
 * **`sudo`**: Grants superuser privileges, required to send and manipulate raw TCP SYN packets at a low level.
 * **`nmap`**: Command-line tool used for asset discovery and network security auditing.
@@ -13,41 +13,36 @@
 
 ---
 
-###   Traffic Analysis and Unencrypted Credential Capture with Wireshark
+### Traffic Analysis and Unencrypted Credential Capture with Wireshark
 
 * **Environment Setup:** Deployed a local HTTP service using Python's built-in web server module (`python3 -m http.server 8080`) to handle local web requests.
 * **Packet Capture:** Initiated a packet capture session in Wireshark bound specifically to the Loopback interface (`lo`) to record internal network communications.
 * **Traffic Generation:** Transmitted simulated authentication parameters via an HTTP POST request using `curl`:
   ```bash
-  curl -X POST -d "usuario=admin&clave=12345" [http://127.0.0.1:8080](http://127.0.0.1:8080)
-
-###  DNS Traffic Analysis and Unencrypted Domain Resolution Inspection
-
-**Environment Setup:** Bound Wireshark to the active primary network interface to record external network interactions.
-
-* **Packet Capture:** Started a live capture session targeting standard UDP port 53 traffic.
-
-* **Traffic Generation:** Executed explicit domain name resolutions via CLI using `dig`:
-
-  ```bash
-
-dig example.com @8.8.8.8 
-```
+  curl -X POST -d "usuario=admin&clave=12345" http://127.0.0.1:8080
+  ```
 
 ---
 
-###  TCP 3-Way Handshake Analysis with Wireshark
+### DNS Traffic Analysis and Unencrypted Domain Resolution Inspection
+
+* **Environment Setup:** Bound Wireshark to the active primary network interface to record external network interactions.
+* **Packet Capture:** Started a live capture session targeting standard UDP port 53 traffic.
+* **Traffic Generation:** Executed explicit domain name resolutions via CLI using `dig`:
+  ```bash
+  dig example.com @8.8.8.8
+  ```
+
+---
+
+### TCP 3-Way Handshake Analysis with Wireshark
 
 * **Environment Setup:** Bound Wireshark to the active network interface.
-
 * **Traffic Generation:** Initiated a direct TCP connection via CLI to a target host using `curl`:
-
   ```bash
-
-  curl -v [http://example.com](http://example.com)
-```
+  curl -v http://example.com
+  ```
 
 ---
-
 
 
