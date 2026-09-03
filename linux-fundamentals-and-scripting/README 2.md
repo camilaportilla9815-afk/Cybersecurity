@@ -18,7 +18,8 @@ ORIGEN="/home/camila/Fundamental-of-Cybersecurity"
 DESTINO="/home/camila/backup"
 
 mkdir -p "$DESTINO"
-cp -r "$ORIGEN" "$DESTINO/backup-$(date +%F)" ```
+cp -r "$ORIGEN" "$DESTINO/backup-$(date +%F)"
+```
 
 ---
 
