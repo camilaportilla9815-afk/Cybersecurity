@@ -1,4 +1,4 @@
-# Network Reconnaissance and Port Mapping with Nmap
+## Network Reconnaissance and Port Mapping with Nmap
 
 * **`sudo`**: Grants superuser privileges, required to send and manipulate raw TCP SYN packets at a low level.
 * **`nmap`**: Command-line tool used for asset discovery and network security auditing.
