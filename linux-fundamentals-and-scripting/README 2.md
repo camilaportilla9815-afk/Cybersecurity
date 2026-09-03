@@ -32,6 +32,8 @@ PALABRA="Network"
 
 grep -rnw "$CARPETA" -e "$PALABRA"
 
+---
+
 ## Exercise 4: System Resource Monitoring Script (`monitoring.sh`)
 
 * **Script Creation & Logic:** Utilized the `nano` text editor to construct `monitoring.sh`. Integrated `top -b -n 1 | head -n 10` to capture non-interactive CPU metrics and top resource-consuming processes, followed by `free -h` to display memory/swap utilization in human-readable format.
