@@ -1,7 +1,20 @@
-Exercise 1 - Management + Permissions: I created a directory structure (project and logs) and files using mkdir and touch. I learned to move files using mv and wildcards (*.log), and practiced access control: I used chmod to set files to "read-only" mode and others to be "executable" only for the user. Finally, I deleted files with rm.
+## Lab Exercises: Linux & Network Fundamentals
 
-Exercise 2 - Advanced Searches: I created sample files with content using nano and organized them in a folder named data. Then, I used grep to perform advanced searches: I found lines containing the word "ERROR," searched for the word "user" regardless of case (case-insensitive), and counted how many times the word "admin" appeared. Finally, I learned to use sort and its options to order a file's content and display only the unique lines.
+### 1. File Management & Access Control
+* **Directory Operations:** Built workspace structures (`mkdir`, `touch`) and handled file migrations using wildcards (`mv *.log`).
+* **Access Control:** Applied Least Privilege via `chmod` (enforcing read-only policies and setting user-only executable rights), and managed file cleanup (`rm`).
 
-Exercise 3 - Processes + Systems : I learned how to list active processes with ps aux, how to filter results using grep, and how to monitor resources in real time with top. I also practiced how to terminate processes manually with kill, and I better understood how to view system statistics (df -h, du -sh, free -m, uptime) to interpret disk usage, memory, and system load. 
+### 2. Log Analysis & Text Processing
+* **Pattern Searching:** Audited log files using `grep` (extracted `"ERROR"` events, performed case-insensitive queries for `"user"`, and counted `"admin"` occurrences).
+* **Data Formatting:** Processed output using `sort` and `uniq` to eliminate duplicates and structure log entries.
 
-Exercise 4 - Network: Initially, I couldn't see my real network, so I had to switch my virtual machine to bridged mode! That connected it directly to my router and gave me a real IP address, allowing me to actually work with the internet. Once that was sorted, I used the modern ip command (specifically ip a and ip route) to view my IP and gateway. I then verified connectivity with ping and mapped the packet route to Google (8.8.8.8) using traceroute. Finally, I checked my open ports with netstat -tulnp and used curl to interact with a webpage.
+### 3. System Monitoring & Process Management
+* **Process Auditing:** Analyzed active processes (`ps aux`), filtered running services, and monitored live system metrics using `top`.
+* **Process Control:** Exercised process termination via `kill`.
+* **Resource Inspection:** Audited disk capacity (`df -h`, `du -sh`), memory usage (`free -m`), and uptime/load averages (`uptime`).
+
+### 4. Network Diagnostics & Socket Inspection
+* **Virtual Networking:** Configured VM network interface to **Bridged Mode** for direct routing and real IP assignment.
+* **IP Configuration:** Inspected network interfaces and routing tables using `ip a` and `ip route`.
+* **Path Tracing:** Verified ICMP reachability (`ping`) and mapped routing hops (`traceroute 8.8.8.8`).
+* **Socket Auditing:** Identified open listening ports (`netstat -tulnp`) and performed HTTP requests via `curl`.
