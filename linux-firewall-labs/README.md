@@ -1,10 +1,4 @@
-# 🛡️ Linux Server Hardening & UFW Firewall Configuration
-
-This repository provides a practical, automated, and fully documented lab on configuring, auditing, and hardening **UFW (Uncomplicated Firewall)** on Linux systems. The core objective is to establish a robust security posture using the **Least Privilege Principle (Default Deny)**.
-
----
-
-## 🎯 Project Objectives
+# Linux Server Hardening & UFW Firewall Configuration
 
 1. Implement a strict **Default Deny Incoming** traffic policy.
 2. Configure secure access for essential network services (SSH, HTTP, HTTPS).
@@ -16,7 +10,7 @@ This repository provides a practical, automated, and fully documented lab on con
 
 ---
 
-## 🛠️ Key Commands Summary
+## Key Commands Summary
 
 | Category | Command | Description |
 | :--- | :--- | :--- |
@@ -24,7 +18,7 @@ This repository provides a practical, automated, and fully documented lab on con
 | **Policies** | `sudo ufw default deny incoming` | Blocks all incoming traffic by default |
 | **Web Services**| `sudo ufw allow 80/tcp` / `443/tcp` | Allows HTTP and HTTPS web traffic |
 | **SSH Hardening**| `sudo ufw limit 22/tcp` | Applies rate limiting against brute-force attempts |
-| **Subnet Access**| `sudo ufw allow from 192.168.1.0/24 to any port 8080` | Restricts access to specific subnets |
+| **Subnet Access**| `sudo ufw allow from 10.0.2.0/24 to any port 8080` | Restricts access to specific subnets |
 | **Denylist** | `sudo ufw deny from 203.0.113.0/24` | Explicitly blocks untrusted external networks |
 | **Audit** | `sudo ufw status numbered` | Displays active rules with numbered indices |
 | **Rule Removal**| `sudo ufw delete [number_or_rule]` | Deletes a rule by index number or definition |
@@ -32,7 +26,7 @@ This repository provides a practical, automated, and fully documented lab on con
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 .
