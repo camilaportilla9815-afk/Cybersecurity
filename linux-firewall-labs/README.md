@@ -26,10 +26,3 @@
 
 ---
 
-## Repository Structure
-
-```text
-.
-├── README.md                 # Technical project documentation
-├── ufw_hardening.sh          # Bash automation script
-└── execution_evidence.txt    # Command execution output log
