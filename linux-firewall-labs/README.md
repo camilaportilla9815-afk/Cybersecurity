@@ -25,4 +25,53 @@
 | **Logging** | `sudo ufw logging medium` | Configures verbosity for firewall audit logs |
 
 ---
+#!/bin/bash
+# ==============================================================================
+# Script: 01-basic-firewall.sh
+# Descripción: Configuración básica de cortafuegos para un servidor web seguro.
+# Autor: Tu Nombre / Nombre de Usuario en GitHub
+# ==============================================================================
 
+# ------------------------------------------------------------------------------
+# 1. Limpieza de reglas previas
+# ------------------------------------------------------------------------------
+echo "[-] Limpiando reglas anteriores"
+iptables -F
+
+
+# ------------------------------------------------------------------------------
+# 2. Políticas por defecto (Denegar todo lo entrante)
+# ------------------------------------------------------------------------------
+echo "[-] Estableciendo políticas por defecto..."
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+
+# ------------------------------------------------------------------------------
+# 3. Permitir tráfico en Loopback (127.0.0.1)
+# ------------------------------------------------------------------------------
+echo "[-] Configurando interfaz de loopback..."
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+# ------------------------------------------------------------------------------
+# 4. Permitir tráfico de conexiones ya establecidas y relacionadas
+# ------------------------------------------------------------------------------
+echo "[-] Permitiendo tráfico de conexiones existentes..."
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# ------------------------------------------------------------------------------
+# 5. Permitir servicios entrantes esenciales (SSH, HTTP, HTTPS)
+# ------------------------------------------------------------------------------
+echo "[-] Abriendo puertos 22 (SSH), 80 (HTTP) y 443 (HTTPS)..."
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# ------------------------------------------------------------------------------
+# 6. Permitir Pings (ICMP) con control de frecuencia (Rate Limiting)
+# ------------------------------------------------------------------------------
+echo "[-] Configurando control de peticiones ICMP (Ping)..."
+iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s --limit-burst 5 -j ACCEPT
+
+echo "[+] Cortafuegos configurado con éxito."
