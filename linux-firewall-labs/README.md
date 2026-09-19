@@ -27,9 +27,7 @@
 ---
 #!/bin/bash
 # ==============================================================================
-# Script: 01-basic-firewall.sh
-# Descripción: Configuración básica de cortafuegos para un servidor web seguro.
-# Autor: Tu Nombre / Nombre de Usuario en GitHub
+# Script: iptables-basic-firewall
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
